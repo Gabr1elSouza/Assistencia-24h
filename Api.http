@@ -1,0 +1,13 @@
+POST http://localhost:3333/apolice
+Content-Type: application/json
+
+
+{   
+  "name": "Gabriel",
+  "placa": "PKS7880",
+  "veiculo": "Honda Fit",
+  "telefone": "71988319464",
+  "vencimento": "25/12/2025",
+  "apolice": "fkasdjasfnjkasfk",
+  "renavam": "12634912764912"
+}
