@@ -2,13 +2,13 @@
 CREATE TABLE "infoSeguros" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
+    "CPF" TEXT NOT NULL,
     "placa" TEXT NOT NULL,
     "veiculo" TEXT NOT NULL,
     "telefone" TEXT NOT NULL,
     "vencimento" TEXT NOT NULL,
     "apolice" TEXT NOT NULL,
-    "renavam" TEXT NOT NULL,
-    "slug" TEXT NOT NULL
+    "renavam" TEXT NOT NULL
 );
 
 -- CreateTable
@@ -24,7 +24,10 @@ CREATE TABLE "imagens" (
 CREATE UNIQUE INDEX "infoSeguros_name_key" ON "infoSeguros"("name");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "infoSeguros_CPF_key" ON "infoSeguros"("CPF");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "infoSeguros_placa_key" ON "infoSeguros"("placa");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "infoSeguros_slug_key" ON "infoSeguros"("slug");
+CREATE UNIQUE INDEX "infoSeguros_apolice_key" ON "infoSeguros"("apolice");

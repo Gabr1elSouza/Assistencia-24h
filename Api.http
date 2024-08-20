@@ -3,11 +3,19 @@ Content-Type: application/json
 
 
 {   
-  "name": "Gabriel",
-  "placa": "PKS7880",
-  "veiculo": "Honda Fit",
-  "telefone": "71988319464",
-  "vencimento": "25/12/2025",
-  "apolice": "fkasdjasfnjkasfk",
-  "renavam": "12634912764912"
+  "name": "Tainá",
+  "CPF": "41289712489701",
+  "placa": "PKV1234",
+  "veiculo": "Tigo 5 Pro",
+  "telefone": "71981303523",
+  "vencimento": "26/09/2025",
+  "apolice": "123434535",
+  "renavam": "12478127849"
 }
+###
+
+GET  http://localhost:3333/apolice/fkasdjasfnjkasfk
+
+###
+
+GET http://localhost:3333/all-info?query=Gabriel

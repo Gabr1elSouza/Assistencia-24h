@@ -11,13 +11,14 @@ datasource db {
 }
 
 model InfoSeguro {
-  id         String  @id @default(uuid())
-  name       String  @unique
-  placa      String  @unique
+  id         String   @id @default(uuid())
+  name       String   @unique
+  CPF        String   @unique
+  placa      String   @unique
   veiculo    String
   telefone   String
   vencimento String
-  apolice    String
+  apolice    String   @unique
   renavam    String
   imagens    Imagem[] @relation("InfoSeguroImagens") // Relacionamento com a tabela de imagens
 
@@ -25,11 +26,11 @@ model InfoSeguro {
 }
 
 model Imagem {
-  id          Int        @id @default(autoincrement())
-  nome        String
-  imagem      Bytes
+  id           Int        @id @default(autoincrement())
+  nome         String
+  imagem       Bytes
   infoSeguroId String
-  infoSeguro  InfoSeguro @relation("InfoSeguroImagens", fields: [infoSeguroId], references: [id])
+  infoSeguro   InfoSeguro @relation("InfoSeguroImagens", fields: [infoSeguroId], references: [id])
 
   @@map("imagens")
 }

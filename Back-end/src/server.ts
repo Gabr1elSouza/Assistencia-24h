@@ -1,39 +1,51 @@
-import { PrismaClient } from "@prisma/client";
 import fastify from "fastify";
-import { z } from "zod";
+import {
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+} from "fastify-type-provider-zod";
+import { CreateInfoSeguro } from "./routes/create-InfoSe";
+import { getAllInfo } from "./routes/get-all";
+import { GetInfo } from "./routes/getInfo";
+
+import fastifySwagger from "@fastify/swagger";
+import fastifySwaggerUI from "@fastify/swagger-ui";
+import { errorHandler } from "./error-handler";
+import { fastifyCors } from "@fastify/cors";
 
 const app = fastify();
 
-const prisma = new PrismaClient({
-  log: ["query"],
-});
+app.register(fastifyCors, {
+  origin:'*',
+})
 
-app.post("/apolice", async (request, reply) => {
-  const createApoliceSchema = z.object({
-    name: z.string().min(4),
-    placa: z.string(),
-    veiculo: z.string(),
-    telefone: z.string(),
-    vencimento: z.string(),
-    apolice: z.string(),
-    renavam: z.string(),
-  });
-  const data = createApoliceSchema.parse(request.body);
-
-  const apolice = await prisma.infoSeguro.create({
-    data: {
-      name: data.name,
-      placa: data.placa,
-      veiculo: data.veiculo,
-      telefone: data.telefone,
-      vencimento: data.vencimento,
-      apolice: data.apolice,
-      renavam: data.renavam,
+app.register(fastifySwagger, {
+  swagger: {
+    consumes: ["application/json"],
+    produces: ["application/json"],
+    info: {
+      title: "Assistência 24h cPlus",
+      description:
+        "Especificações de Back-end para cadastro e consulta de apolices",
+      version: "1.0.0",
     },
-  });
-  return { apolice: apolice.id };
+  },
+  transform: jsonSchemaTransform,
 });
 
-app.listen({ port: 3333 }).then(() => {
-  console.log("HTTP SERVER RUNING");
+app.register(fastifySwaggerUI, {
+  routePrefix: "/docs",
+});
+
+app.register(CreateInfoSeguro);
+app.register(GetInfo);
+app.register(getAllInfo);
+
+app.setErrorHandler(errorHandler);
+
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
+
+app.listen({ port: 3333, host:'0.0.0.0' }).then(() => {
+  console.log("HTTP SERVER RUNNING");
 });
