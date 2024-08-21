@@ -19,7 +19,7 @@ interface Associados {
   CPF: string;
 }
 
-export function ApoliceList() {
+export async function ApoliceList() {
     const [SearchInput, setSearchInput] = useState("");
     const [page, setPage] = useState(1);
     const [associados, setAssociados] = useState<Associados[]>([]);
