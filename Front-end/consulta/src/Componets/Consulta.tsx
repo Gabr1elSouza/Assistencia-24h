@@ -1,30 +1,22 @@
 import { BookMarked } from "lucide-react";
 import { MouseEvent, useEffect, useState } from "react";
 
-interface ConsultaProps {
-  Apolice: string;
-  setApolice: (value: string) => void;
-  onSearch: () => void;
-  search: boolean;
-  setSearch: (value: string) => void;
+interface Dados {
+  id: string;
+  name: string;
+  placa: string;
+  veiculo: string;
+  telefone: string;
+  vencimento: string;
+  apolice: string;
+  renavam: string;
+  CPF: string;
 }
 
 export function Consulta() {
-  interface Dados {
-    id: string;
-    name: string;
-    placa: string;
-    veiculo: string;
-    telefone: string;
-    vencimento: string;
-    apolice: string;
-    renavam: string;
-    CPF: string;
-  }
-
   const [search, setSearch] = useState(false);
   const [apolice, setApolice] = useState("");
-  const [dados, setDados] = useState<Dados[]>([]);
+  const [dados, setDados] = useState<Dados | null>(null);
 
   useEffect(() => {
     if (search) {
@@ -32,9 +24,8 @@ export function Consulta() {
       fetch(`http://localhost:3333/apolice/${apolice}`)
         .then((response) => response.json())
         .then((data) => {
-          setSearch(false); // Reseta o estado de busca
-          setDados(data);
-          console.log(dados);
+          setDados(data); // Armazena o dado recebido
+          console.log(data);
         });
     }
   }, [search, apolice]);
@@ -67,7 +58,7 @@ export function Consulta() {
       {dados ? (
         <div className="mt-4">
           <h3 className="text-xl font-bold">Resultados da Consulta:</h3>
-          <div key={dados.id} className="mt-2">
+          <div className="mt-2">
             <p>Nome: {dados.name}</p>
             <p>Veículo: {dados.veiculo}</p>
             <p>Placa: {dados.placa}</p>

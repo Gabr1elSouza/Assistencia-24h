@@ -55,7 +55,7 @@ export function ApoliceList() {
     setPage(1);
   }
 
-  function onSearchInputCHange(event: ChangeEvent<HTMLInputElement>) {
+  function onSearchInputChange(event: ChangeEvent<HTMLInputElement>) {
     setSearchInput(event.target.value);
     setPage(1);
   }
@@ -67,7 +67,7 @@ export function ApoliceList() {
         <div className="px-3 w-72 py-1.5 border border-white/10 rounded-lg text-sm flex items-center gap-3">
           <Search className="size-4 text-emerald-400" />
           <input
-            onChange={onSearchInputCHange}
+            onChange={onSearchInputChange}
             className="bg-transparent flex-1 outline-none focus-ring-0"
             placeholder="Buscar nome do associado"
           />
