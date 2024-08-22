@@ -16,19 +16,19 @@ export function App() {
   return (
     <div className="w-full flex items-center justify-center">
       <div className="flex flex-col mt-14 w-2/5 h-auto p-8 bg-zinc-700 rounded-lg">
-        <img className="w-40 mb-4" src={logo} alt="logo cplus" />
-        <div className="flex items-center justify-center">
+        <img className="w-[170px] mb-4 ml-32" src={logo} alt="logo cplus" />
+        <div className="flex items-center justify-center bg-zinc-800 rounded-md" >
           <button
-            className={`px-8 ${
-              activeTab === "form" ? "active bg-zinc-500/40" : ""
+            className={`p-6 flex-1 ${
+              activeTab === "form" ? "active bg-zinc-500/40 rounded-md font-bold shadow-xl" : ""
             }`}
             onClick={() => setActiveTab("form")}
           >
             Formulário
           </button>
           <button
-            className={`px-3 ${
-              activeTab === "consulta" ? "active bg-zinc-500/40" : ""
+            className={`p-6 flex-1 ${
+              activeTab === "consulta" ? "active bg-zinc-500/40 rounded-md font-bold shadow-xl" : ""
             }`}
             onClick={() => setActiveTab("consulta")}
           >
@@ -42,7 +42,7 @@ export function App() {
               Formulário para cadastro de veiculo
             </h2>
             <form className="flex flex-col mt-4 gap-5">
-              <div className="flex pt-2 gap-2">
+              <div className="px-1 w-auto py-1.5  borderb-white/10 rounded-lg text-sm flex items-center gap-3">
                 <IdCard />
                 <input
                   className="w-full bg-transparent outline-none border-b ring-0"
@@ -51,7 +51,7 @@ export function App() {
                   required
                 />
               </div>
-              <div className="flex pt-2 gap-2">
+              <div className="px-1 w-auto py-1.5  borderb-white/10 rounded-lg text-sm flex items-center gap-3">
                 <Fingerprint />
                 <input
                   className="w-full bg-transparent outline-none border-b ring-0"
@@ -60,7 +60,7 @@ export function App() {
                   required
                 />
               </div>
-              <div className="flex pt-2 gap-2">
+              <div className="px-1 w-auto py-1.5  borderb-white/10 rounded-lg text-sm flex items-center gap-3">
                 <Car />
                 <input
                   className="w-full bg-transparent outline-none border-b ring-0"
@@ -69,7 +69,7 @@ export function App() {
                   required
                 />
               </div>
-              <div className="flex pt-2 gap-2">
+              <div className="px-1 w-auto py-1.5  borderb-white/10 rounded-lg text-sm flex items-center gap-3">
                 <RectangleEllipsis />
                 <input
                   className="w-full bg-transparent outline-none border-b ring-0"
@@ -78,16 +78,16 @@ export function App() {
                   required
                 />
               </div>
-              <div className="flex pt-2 gap-2">
+              <div className="px-1 w-auto py-1.5  borderb-white/10 rounded-lg text-sm flex items-center gap-3">
                 <CalendarFold />
                 <input
-                  className="w-full bg-transparent outline-none border-b ring-0"
+                  className="flex-1 bg-transparent outline-none border-b focus-ring-0"
                   type="date"
                   placeholder="Vencimento do contrato"
                   required
                 />
               </div>
-              <div className="flex pt-2 gap-2">
+              <div className="px-1 w-auto py-1.5  borderb-white/10 rounded-lg text-sm flex items-center gap-3">
                 <BookText />
                 <input
                   className="w-full bg-transparent outline-none border-b ring-0"
