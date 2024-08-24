@@ -56,11 +56,11 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
         }
       }
 
-      const imageData = fs.readFileSync("caminho/para/sua/imagem.jpg");
-      const infoSeguroId = "seu_id_info_seguro";
-      const imageName = "imagem1.jpg";
+      // const imageData = fs.readFileSync("caminho/para/sua/imagem.jpg");
+      // const infoSeguroId = "seu_id_info_seguro";
+      // const imageName = "imagem1.jpg";
 
-      createImage(infoSeguroId, imageName, imageData);
+      //createImage(infoSeguroId, imageName, imageData);
       const {
         name,
         placa,
@@ -96,15 +96,15 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
         },
       });
 
-      const novaImagem = await prisma.imagem.create({
-        data: {
-          nome: "imagem.jpg",
-          imagem: imageData,
-          infoSeguro: {
-            connect: { id: Apolice.id },
-          },
-        },
-      });
+      // const novaImagem = await prisma.imagem.create({
+      //   data: {
+      //     nome: "imagem.jpg",
+      //     imagem: imageData,
+      //     infoSeguro: {
+      //       connect: { id: Apolice.id },
+      //     },
+      //   },
+      // });
 
       return reply.status(201).send({
         id: {
