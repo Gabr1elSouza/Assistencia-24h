@@ -9,6 +9,7 @@ import {
   Smartphone,
 } from "lucide-react";
 import { ChangeEvent, MouseEvent, useState } from "react";
+import { toast } from "sonner";
 
 export function Create() {
   const [name, setName] = useState("");
@@ -23,39 +24,39 @@ export function Create() {
 
   function onNameChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setName(event.target.value);
-    console.log(name);
+    
   }
   function onCpfChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setCPF(event.target.value);
-    console.log(CPF);
+    
   }
   function onModelChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setVeiculo(event.target.value);
-    console.log(veiculo);
+    
   }
   function onPlacaChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setPlaca(event.target.value);
-    console.log(placa);
+    
   }
   function onRenavamChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setRenavam(event.target.value);
-    console.log(renavam);
+    
   }
   function onVencimentoChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setVencimento(event.target.value);
-    console.log(vencimento);
+    
   }
   function onCnhChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setCnh(event.target.value);
-    console.log(cnh);
+    
   }
   function onTelefoneChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setTelefone(event.target.value);
-    console.log(telefone);
+    
   }
   function onApoliceChangeInput(event: ChangeEvent<HTMLInputElement>) {
     setApolice(event.target.value);
-    console.log(apolice);
+    
   }
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
@@ -87,9 +88,11 @@ export function Create() {
         // Resposta bem-sucedida
         const result = await response.json();
         console.log("Veículo cadastrado com sucesso:", result);
+        toast.success("Veiculo cadastrado com sucesso!")
       } else {
         // Lida com respostas de erro
         console.error("Erro ao cadastrar veículo:", response.statusText);
+        toast.error("Erro ao cadastrar o veiculo, confirme os dados.")
       }
     } catch (error) {
       console.error("Erro na requisição:", error);

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import logo from "./assests/cPlus Logo + Clube de Benefícios verde.png";
 import { Consulta } from "./Componets/Consulta";
+
+import { Toaster } from 'sonner'
 import { Create } from "./Componets/create";
 
 export function App() {
@@ -9,6 +11,7 @@ export function App() {
 
   return (
     <div className="w-full flex items-center justify-center">
+      <Toaster position="bottom-right" richColors/>
       <div className="flex flex-col mt-14 w-2/5 h-auto p-8 bg-zinc-700 rounded-lg">
         <img className="w-[170px] mb-4 ml-32" src={logo} alt="logo cplus" />
         <div className="flex items-center justify-center bg-zinc-800 rounded-md">

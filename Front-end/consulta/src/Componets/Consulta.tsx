@@ -1,5 +1,6 @@
 import { BookMarked } from "lucide-react";
 import { MouseEvent, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 interface Dados {
   id: string;
@@ -22,10 +23,19 @@ export function Consulta() {
     if (search) {
       setSearch(false);
       fetch(`http://localhost:3333/apolice/${apolice}`)
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erro na resposta da API");
+            toast.warning("Erro interno na API");
+          }
+          return response.json(); // Retorna o JSON extraído
+        })
         .then((data) => {
           setDados(data); // Armazena o dado recebido
-          console.log(data);
+          toast.success("Dados encontrados!");
+        })
+        .catch(() => {
+          toast.error("Dados não encontrados!");
         });
     }
   }, [search, apolice]);
