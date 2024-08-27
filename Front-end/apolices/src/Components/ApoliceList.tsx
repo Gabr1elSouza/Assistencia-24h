@@ -29,7 +29,7 @@ export function ApoliceList() {
 
   const totalPages = Math.ceil(associados.length / 10);
 
-  const url = new URL("http://https://assistencia-24h.onrender.com/all-info");
+  const url = new URL("https://assistencia-24h.onrender.com/all-info");
 
   url.searchParams.set("pageIndex", String(page - 1));
   if (SearchInput.length > 0) {
