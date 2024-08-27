@@ -1,6 +1,5 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import fs from "fs";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { BadRequest } from "./_error/bad-request";
@@ -21,6 +20,8 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
           vencimento: z.string(),
           apolice: z.string(),
           renavam: z.string(),
+          Vcontrato: z.string(),
+          valorAp: z.string(),
         }),
         response: {
           201: z.object({
@@ -33,28 +34,28 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
       },
     },
     async (request, reply) => {
-      async function createImage(
-        infoSeguroId: string,
-        imageName: string,
-        imageData: Buffer
-      ) {
-        try {
-          const newImage = await prisma.imagem.create({
-            data: {
-              nome: imageName,
-              imagem: imageData,
-              infoSeguro: {
-                connect: {
-                  id: infoSeguroId,
-                },
-              },
-            },
-          });
-          console.log("Imagem criada com sucesso:", newImage);
-        } catch (error) {
-          console.error("Erro ao criar imagem:", error);
-        }
-      }
+      // async function createImage(
+      //   infoSeguroId: string,
+      //   imageName: string,
+      //   imageData: Buffer
+      // ) {
+      //   try {
+      //     const newImage = await prisma.imagem.create({
+      //       data: {
+      //         nome: imageName,
+      //         imagem: imageData,
+      //         infoSeguro: {
+      //           connect: {
+      //             id: infoSeguroId,
+      //           },
+      //         },
+      //       },
+      //     });
+      //     console.log("Imagem criada com sucesso:", newImage);
+      //   } catch (error) {
+      //     console.error("Erro ao criar imagem:", error);
+      //   }
+      // }
 
       // const imageData = fs.readFileSync("caminho/para/sua/imagem.jpg");
       // const infoSeguroId = "seu_id_info_seguro";
@@ -70,6 +71,8 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
         telefone,
         apolice,
         CPF,
+        Vcontrato,
+        valorAp,
       } = request.body;
 
       // Use findFirst se você quiser procurar por qualquer correspondência
@@ -93,6 +96,8 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
           vencimento,
           apolice,
           renavam,
+          Vcontrato,
+          valorAp,
         },
       });
 
