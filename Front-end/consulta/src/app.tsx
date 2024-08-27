@@ -12,8 +12,8 @@ export function App() {
   return (
     <div className="w-full flex items-center justify-center">
       <Toaster position="bottom-right" richColors/>
-      <div className="flex flex-col mt-14 w-2/5 h-auto p-8 bg-zinc-700 rounded-lg">
-        <img className="w-[170px] mb-4 ml-32" src={logo} alt="logo cplus" />
+      <div className="flex flex-col itemcejustify-center mt-14 w-4/5 h-auto p-8 bg-zinc-700 rounded-lg">
+        <img className="w-[250px] mb-8 self-center" src={logo} alt="logo cplus" />
         <div className="flex items-center justify-center bg-zinc-800 rounded-md">
           <button
             className={`p-6 flex-1 ${

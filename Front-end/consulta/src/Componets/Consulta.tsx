@@ -12,6 +12,8 @@ interface Dados {
   apolice: string;
   renavam: string;
   CPF: string;
+  Vcontrato: string
+  valorAp: string
 }
 
 export function Consulta() {
@@ -75,6 +77,7 @@ export function Consulta() {
             <p>CPF: {dados.CPF}</p>
             <p>Vencimento: {dados.vencimento}</p>
             <p>Renavam: {dados.renavam}</p>
+            <p>Plano Contratado: {dados.Vcontrato}</p>
           </div>
         </div>
       ) : (
