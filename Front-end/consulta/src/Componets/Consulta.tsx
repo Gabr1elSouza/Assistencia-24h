@@ -24,7 +24,7 @@ export function Consulta() {
   useEffect(() => {
     if (search) {
       setSearch(false);
-      fetch(`http://localhost:3333/apolice/${apolice}`)
+      fetch(`https://assistencia-24h.onrender.com/apolice/${apolice}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Erro na resposta da API");

@@ -77,7 +77,7 @@ export function Create() {
 
     try {
       // Faz a requisição POST para o servidor
-      const response = await fetch("http://localhost:3333/apolice", {
+      const response = await fetch("https://assistencia-24h.onrender.com/apolice", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
