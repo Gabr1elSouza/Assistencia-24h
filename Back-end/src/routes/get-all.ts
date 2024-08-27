@@ -28,6 +28,8 @@ export async function getAllInfo(app: FastifyInstance) {
               apolice: z.string(),
               renavam: z.string(),
               CPF: z.string(),
+              Vcontrato: z.string(),
+              valorAp: z.string(),
             })
           ),
         },
