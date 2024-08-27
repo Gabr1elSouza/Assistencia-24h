@@ -24,6 +24,8 @@ export async function GetInfo(app: FastifyInstance) {
             telefone: z.string(),
             vencimento: z.string(),
             renavam: z.string(),
+            Vcontrato: z.string(),
+            valorAp: z.string(),
           }),
         },
       },
@@ -41,6 +43,8 @@ export async function GetInfo(app: FastifyInstance) {
           telefone: true,
           vencimento: true,
           renavam: true,
+          Vcontrato: true,
+          valorAp: true,
         },
         where: {
           apolice: apolice,
