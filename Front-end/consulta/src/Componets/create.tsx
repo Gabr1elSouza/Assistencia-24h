@@ -77,7 +77,7 @@ export function Create() {
       <h2 className="text-center font-semibold text-lg">
         Formulário para cadastro de veículo
       </h2>
-      <div className="flex flex-col md:flex-row mt-8 gap-5 items-center justify-center">
+      <div className="flex flex-col lg:w-full lg:ml-32 md:flex-row mt-8 gap-5 items-center justify-center">
         <div className="flex-1 gap-4">
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <IdCard />
@@ -152,15 +152,19 @@ export function Create() {
               onChange={(e) => setCnh(e.target.value)}
             />
           </div>
+          <div className="pt-4">
+          <span className="mt-5">Vencimento da apolice</span>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
+          
             <CalendarFold />
             <input
               className="w-full bg-transparent outline-none border-b ring-0"
-              type="text"
+              type="date"
               placeholder="Data de Vencimento"
               required
               onChange={(e) => setVencimento(e.target.value)}
             />
+          </div>
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <Scroll />
