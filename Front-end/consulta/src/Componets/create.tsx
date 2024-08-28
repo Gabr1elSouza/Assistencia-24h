@@ -10,7 +10,7 @@ import {
   Scroll,
   Smartphone,
 } from "lucide-react";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { MouseEvent, useState } from "react";
 import { toast } from "sonner";
 
 export function Create() {
@@ -183,19 +183,19 @@ export function Create() {
             />
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
-          <select
-                className="w-full appearance-none bg-zinc-700 outline-none border focus:ring-0 rounded-lg focus:ring-zinc-500 focus:border-zinc-500 block p-2.5 text-center"
-                required
-                onChange={(event) => setVcontrato(event.target.value)}
-              >
-                <option className="text-zinc-500" value="">
-                  Selecione o plano de cobertura
-                </option>
-                <option value="Bronze">Bronze</option>
-                <option value="Prata">Prata</option>
-                <option value="Ouro">Ouro</option>
-                <option value="Diamante">Diamante</option>
-              </select>
+            <select
+              className="w-full appearance-none bg-zinc-700 outline-none border focus:ring-0 rounded-lg focus:ring-zinc-500 focus:border-zinc-500 block p-2.5 text-center"
+              required
+              onChange={(event) => setVcontrato(event.target.value)}
+            >
+              <option className="text-zinc-500" value="">
+                Selecione o plano de cobertura
+              </option>
+              <option value="Bronze">Bronze</option>
+              <option value="Prata">Prata</option>
+              <option value="Ouro">Ouro</option>
+              <option value="Diamante">Diamante</option>
+            </select>
           </div>
         </div>
       </div>
