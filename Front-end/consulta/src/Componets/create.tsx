@@ -26,37 +26,6 @@ export function Create() {
   const [Vcontrato, setVcontrato] = useState("");
   const [valorAp, setValorAp] = useState("");
 
-  function onNameChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setName(event.target.value);
-  }
-  function onCpfChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setCPF(event.target.value);
-  }
-  function onModelChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setVeiculo(event.target.value);
-  }
-  function onPlacaChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setPlaca(event.target.value);
-  }
-  function onRenavamChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setRenavam(event.target.value);
-  }
-  function onVencimentoChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setVencimento(event.target.value);
-  }
-  function onCnhChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setCnh(event.target.value);
-  }
-  function onTelefoneChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setTelefone(event.target.value);
-  }
-  function onApoliceChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setApolice(event.target.value);
-  }
-  function onApoliceValorChangeInput(event: ChangeEvent<HTMLInputElement>) {
-    setValorAp(event.target.value);
-  }
-
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
