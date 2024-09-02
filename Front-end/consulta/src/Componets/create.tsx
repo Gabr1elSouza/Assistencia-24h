@@ -11,6 +11,7 @@ import {
   Smartphone,
 } from "lucide-react";
 import { MouseEvent, useState } from "react";
+import InputMask from "react-input-mask";
 import { toast } from "sonner";
 
 export function Create() {
@@ -91,21 +92,25 @@ export function Create() {
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <Fingerprint />
-            <input
+            <InputMask
               className="w-full bg-transparent outline-none border-b ring-0"
               type="text"
               placeholder="CPF"
               required
+              mask="999.999.999-99"
+              maskChar=" "
               onChange={(e) => setCPF(e.target.value)}
             />
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <Smartphone />
-            <input
+            <InputMask
               className="w-full bg-transparent outline-none border-b ring-0"
               type="text"
               placeholder="Telefone"
               required
+              mask="(99) 99999-9999"
+              maskChar=" "
               onChange={(e) => setTelefone(e.target.value)}
             />
           </div>
@@ -121,21 +126,25 @@ export function Create() {
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <RectangleEllipsis />
-            <input
+            <InputMask
               className="w-full bg-transparent outline-none border-b ring-0"
               type="text"
               placeholder="Placa do Veículo"
               required
+              mask="*******"
+              maskChar=" "
               onChange={(e) => setPlaca(e.target.value)}
             />
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <BookText />
-            <input
+            <InputMask
               className="w-full bg-transparent outline-none border-b ring-0"
               type="text"
               placeholder="Renavam"
               required
+              mask="9999999999-9"
+              maskChar=" "
               onChange={(e) => setRenavam(e.target.value)}
             />
           </div>
@@ -153,18 +162,18 @@ export function Create() {
             />
           </div>
           <div className="pt-4">
-          <span className="mt-5">Vencimento da apolice</span>
-          <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
-          
-            <CalendarFold />
-            <input
-              className="w-full bg-transparent outline-none border-b ring-0"
-              type="date"
-              placeholder="Data de Vencimento"
-              required
-              onChange={(e) => setVencimento(e.target.value)}
-            />
-          </div>
+            <span className="mt-5">Vencimento da apolice</span>
+            <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
+              <CalendarFold />
+              <InputMask
+                className="w-full bg-transparent outline-none border-b ring-0"
+                placeholder="Data de Vencimento"
+                required
+                mask="99/99/2099"
+                maskChar=" "
+                onChange={(e) => setVencimento(e.target.value)}
+              />
+            </div>
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <Scroll />
@@ -178,11 +187,13 @@ export function Create() {
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <DollarSignIcon />
-            <input
+            <InputMask
               className="w-full bg-transparent outline-none border-b ring-0"
               type="text"
               placeholder="Valor da Apólice"
               required
+              mask="R$ 999999,00"
+              maskChar=" "
               onChange={(e) => setValorAp(e.target.value)}
             />
           </div>
