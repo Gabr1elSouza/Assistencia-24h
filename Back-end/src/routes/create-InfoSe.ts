@@ -34,34 +34,6 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
       },
     },
     async (request, reply) => {
-      // async function createImage(
-      //   infoSeguroId: string,
-      //   imageName: string,
-      //   imageData: Buffer
-      // ) {
-      //   try {
-      //     const newImage = await prisma.imagem.create({
-      //       data: {
-      //         nome: imageName,
-      //         imagem: imageData,
-      //         infoSeguro: {
-      //           connect: {
-      //             id: infoSeguroId,
-      //           },
-      //         },
-      //       },
-      //     });
-      //     console.log("Imagem criada com sucesso:", newImage);
-      //   } catch (error) {
-      //     console.error("Erro ao criar imagem:", error);
-      //   }
-      // }
-
-      // const imageData = fs.readFileSync("caminho/para/sua/imagem.jpg");
-      // const infoSeguroId = "seu_id_info_seguro";
-      // const imageName = "imagem1.jpg";
-
-      //createImage(infoSeguroId, imageName, imageData);
       const {
         name,
         placa,
@@ -75,7 +47,6 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
         valorAp,
       } = request.body;
 
-      // Use findFirst se você quiser procurar por qualquer correspondência
       const ErrorUnique = await prisma.infoSeguro.findFirst({
         where: {
           OR: [{ name }, { placa }, { renavam }, { CPF }],
@@ -85,38 +56,33 @@ export async function CreateInfoSeguro(app: FastifyInstance) {
       if (ErrorUnique !== null) {
         throw new BadRequest("Esses dados já estão na nossa base de dados.");
       }
+      if (name === "" || apolice === "" || veiculo === "" || CPF === "") {
+        throw new BadRequest(
+          "Preencha todos os dados necessarios para cadastro."
+        );
+      } else {
+        const Apolice = await prisma.infoSeguro.create({
+          data: {
+            name,
+            CPF,
+            placa,
+            veiculo,
+            telefone,
+            vencimento,
+            apolice,
+            renavam,
+            Vcontrato,
+            valorAp,
+          },
+        });
 
-      const Apolice = await prisma.infoSeguro.create({
-        data: {
-          name,
-          CPF,
-          placa,
-          veiculo,
-          telefone,
-          vencimento,
-          apolice,
-          renavam,
-          Vcontrato,
-          valorAp,
-        },
-      });
-
-      // const novaImagem = await prisma.imagem.create({
-      //   data: {
-      //     nome: "imagem.jpg",
-      //     imagem: imageData,
-      //     infoSeguro: {
-      //       connect: { id: Apolice.id },
-      //     },
-      //   },
-      // });
-
-      return reply.status(201).send({
-        id: {
-          id: Apolice.id,
-          apolice: Apolice.apolice,
-        },
-      });
+        return reply.status(201).send({
+          id: {
+            id: Apolice.id,
+            apolice: Apolice.apolice,
+          },
+        });
+      }
     }
   );
 }

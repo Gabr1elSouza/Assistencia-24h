@@ -10,12 +10,15 @@ Content-Type: application/json
   "telefone": "71981303523",
   "vencimento": "26/09/2025",
   "apolice": "123434535",
-  "renavam": "12478127849"
+  "renavam": "12478127849",
+  "Vcontrato": "Prata",
+  "valorAp": "3.000,00"
+
 }
 ###
 
-GET  http://localhost:3333/apolice/fkasdjasfnjkasfk
+GET  http://localhost:3333/apolice/VGHAGFJ656456
 
 ###
 
-GET http://localhost:3333/all-info?query=Gabriel
+GET http://localhost:3333/all-info?query=

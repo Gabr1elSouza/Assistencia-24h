@@ -29,6 +29,15 @@ export function Create() {
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
+    //Padronização de dados
+    function upperCaseData() {
+      data.name = data.name.toUpperCase();
+      data.placa = data.placa.toUpperCase();
+      data.veiculo = data.veiculo.toUpperCase();
+      data.apolice = data.apolice.toUpperCase();
+      data.Vcontrato = data.Vcontrato.toUpperCase();
+    }
+
     // Dados a serem enviados no corpo da requisição
     const data = {
       name,
@@ -46,16 +55,14 @@ export function Create() {
 
     try {
       // Faz a requisição POST para o servidor
-      const response = await fetch(
-        "https://assistencia-24h.onrender.com/apolice",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      upperCaseData();
+      const response = await fetch("https://assistencia-24h.onrender.com/apolice", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         // Resposta bem-sucedida
@@ -69,6 +76,7 @@ export function Create() {
       }
     } catch (error) {
       console.error("Erro na requisição:", error);
+      toast.error(`Error: ${error}`);
     }
   };
 
@@ -153,18 +161,17 @@ export function Create() {
             />
           </div>
           <div className="pt-4">
-          <span className="mt-5">Vencimento da apolice</span>
-          <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
-          
-            <CalendarFold />
-            <input
-              className="w-full bg-transparent outline-none border-b ring-0"
-              type="date"
-              placeholder="Data de Vencimento"
-              required
-              onChange={(e) => setVencimento(e.target.value)}
-            />
-          </div>
+            <span className="mt-5">Vencimento da apolice</span>
+            <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
+              <CalendarFold />
+              <input
+                className="w-full bg-transparent outline-none border-b ring-0"
+                type="date"
+                placeholder="Data de Vencimento"
+                required
+                onChange={(e) => setVencimento(e.target.value)}
+              />
+            </div>
           </div>
           <div className="px-1 w-full max-w-[350px] h-12 py-1.5 border-b border-white/10 rounded-lg text-sm flex items-center gap-3">
             <Scroll />
